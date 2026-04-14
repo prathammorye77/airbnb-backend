@@ -10,10 +10,10 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 const jwt = require("jsonwebtoken");
 const MONGO_URL = process.env.MONGO_URL;
 const CLIENT_URL = process.env.CLIENT_URL;
-
+const CLIENT_URL2 = process.env.CLIENT_URL2;
 app.use(
   cors({
-    origin: CLIENT_URL,
+    origin:[ CLIENT_URL, CLIENT_URL2],
     credentials: true,
   }),
 );
