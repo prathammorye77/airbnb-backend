@@ -11,13 +11,15 @@ exports.toggleFavorite = async (req, res) => {
     const isFav = user.favorites.includes(listingId);
 
     if (isFav) {
-      // ❌ remove
-      user.favorites.pull(listingId);
+      // remove
+      user.favorites = user.favorites.filter(
+        (id) => id.toString() !== listingId,
+      );
     } else {
-      // ✅ add
+      // add
       user.favorites.push(listingId);
     }
-
+    
     await user.save();
 
     res.json({
