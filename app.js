@@ -13,7 +13,7 @@ const CLIENT_URL = process.env.CLIENT_URL;
 const CLIENT_URL2 = process.env.CLIENT_URL2;
 app.use(
   cors({
-    origin:[ CLIENT_URL, CLIENT_URL2],
+    origin: "http://localhost:5173",
     credentials: true,
   }),
 );
@@ -33,6 +33,7 @@ async function main() {
 }
 const authRoutes = require("./routes/authRoutes");
 const listingRoutes = require("./routes/listingRoute");
+const reviewRoutes = require("./routes/reviewRoute");
 
 app.post("/auth/google", async (req, res) => {
   try {
@@ -73,6 +74,7 @@ app.post("/auth/google", async (req, res) => {
 app.use("/", authRoutes);
 app.use("/listings", listingRoutes);
 app.use("/favorites", require("./routes/favoriteRoutes"));
+app.use("/reviews", reviewRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log("app is listening");
