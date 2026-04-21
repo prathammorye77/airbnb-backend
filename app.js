@@ -13,7 +13,7 @@ const CLIENT_URL = process.env.CLIENT_URL;
 const CLIENT_URL2 = process.env.CLIENT_URL2;
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [CLIENT_URL,CLIENT_URL2],
     credentials: true,
   }),
 );
